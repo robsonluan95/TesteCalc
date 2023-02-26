@@ -53,6 +53,16 @@ export default function Calculadora(){
             resultado=numAntigo-num
             setNum(resultado)
 
+        }else if( operacao==='+'){
+            let resultado=0;
+            resultado=numAntigo+num
+            setNum(resultado)
+
+        }else if( operacao==='x'){
+            let resultado=0;
+            resultado=numAntigo*num
+            setNum(resultado)
+
         }else{
             setNumAntigo(0)
             setNum(0)
@@ -102,7 +112,11 @@ export default function Calculadora(){
                         }
                     }>9</button>
 
-                    <button className='color--orange' >x</button>
+                    <button className='color--orange' onClick={
+                        ()=>{
+                            operacaoR('x')
+                        }
+                    }  >x</button>
                     
                     <button className='color--gray' onClick={
                         ()=>{
@@ -142,9 +156,11 @@ export default function Calculadora(){
                         }
                     }>3</button>
 
-                    <button className='color--orange' onClick={()=>{
-                        
-                    }
+                    <button className='color--orange' onClick={
+                        ()=>{
+                            operacaoR("+")
+                        }
+                    
                     } >+</button>   
                     
                     <button className='color--gray extra' onClick={
