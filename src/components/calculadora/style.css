@@ -1,0 +1,39 @@
+button{
+    width: 3em;
+    height: 3em;
+    font-size: 1.5em;
+    border: none;
+    border-radius:2em ;
+    margin: 0.3em;
+    font-weight: bold;
+}
+button:hover{
+    cursor: pointer;
+}
+.container{
+    background-color: black;
+    border-radius: 1em;
+    padding: 1em;
+
+}
+
+.color--orange{
+    background-color: #ff9500;
+    color:white;
+}
+.color--gray{
+    background-color: #505050;
+    color:white;
+}
+.extra{
+    width: 6.5em;
+    margin-left: 0.2em;
+    margin-right: 0.5em;
+}
+.num{
+    color: white;
+    display: flex;
+    justify-content: right;
+    margin-right: 1em;
+    font-size: 3.5em;
+}
