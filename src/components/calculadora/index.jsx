@@ -5,21 +5,61 @@ import './style.css'
 
 export default function Calculadora(){
     const [num, setNum]= useState(0);
+    const [numAntigo,setNumAntigo]=useState()
+    const [operacao,setOperacao]=useState()
 
     function Calc(e){
         let valor=num;
         if (num==0){
-            setNum(`${e}`);
+            setNum(parseInt(`${e}`));
         }else{
-            setNum(valor+`${e}`);
+            setNum(parseInt(valor+`${e}`));
         }
         
     }
   
-    console.log(parseInt(num))
     function Ac(){
         setNum(0)
     }
+
+    function operacaoR(e){
+        setOperacao(e)
+        setNumAntigo(num)
+        setNum(0)
+        
+
+    }
+    
+    function resul(){
+        
+
+        if (operacao==='/'){
+            
+            if (num===0){
+                setNum(numAntigo)
+            }else{
+                let resultado=0;
+                resultado=(parseInt(numAntigo)/parseInt(num)).toFixed(2)
+                setNum(resultado)
+            }
+            
+        }else if( operacao==='%'){
+            let resultado=0;
+            resultado=(parseInt(numAntigo)/100).toFixed(2)
+            setNum(resultado)
+
+        }else if( operacao==='-'){
+            let resultado=0;
+            resultado=numAntigo-num
+            setNum(resultado)
+
+        }else{
+            setNumAntigo(0)
+            setNum(0)
+        }
+        
+    }
+
 
     return(
         <div className=''>
@@ -32,8 +72,19 @@ export default function Calculadora(){
                         Ac()
                     }}>AC </button>
                     <button>+/-</button>
-                    <button>%</button>
-                    <button className='color--orange'>/</button>
+
+                    <button  onClick={
+                        ()=>{
+                            operacaoR('%')
+                        }
+                    }
+                    >%</button>
+                    <button className='color--orange' 
+                     onClick={
+                        ()=>{
+                            operacaoR('/')
+                        }
+                    }>/</button>
 
                     <button className='color--gray'  onClick={
                         ()=>{
@@ -69,7 +120,11 @@ export default function Calculadora(){
                         }
                     }>6</button>
 
-                    <button className='color--orange' >-</button>
+                    <button className='color--orange' onClick={
+                        ()=>{
+                            operacaoR("-")
+                        }
+                    }  >-</button>
 
                     <button className='color--gray' onClick={
                         ()=>{
@@ -92,14 +147,23 @@ export default function Calculadora(){
                     }
                     } >+</button>   
                     
-                    <button className='color--gray extra'  >0</button>
+                    <button className='color--gray extra' onClick={
+                        ()=>{
+                            Calc(0)
+                            
+                        }
+                    } >0</button>
                     <button className='color--gray'>,</button>
                     
                     
                     
                     
                     
-                    <button className='color--orange' >=</button>
+                    <button className='color--orange' onClick={
+                        ()=>{
+                            resul()
+                        }
+                    }  >=</button>
                 </div>
             </Container>
         </div>
